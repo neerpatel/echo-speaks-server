@@ -1,0 +1,37 @@
+spec:
+  name: echo-speak-server
+  services:
+  - build_command: yarn build
+    environment_slug: node-js
+    envs:
+  - key: smartThingsUrl
+    scope: RUN_TIME
+    value: ""
+  - key: appCallbackUrl
+    scope: RUN_TIME
+    value: ""
+  - key: useHeroku
+    scope: RUN_TIME
+    value: "null"
+  - key: hubPlatform
+    scope: RUN_TIME
+    value: "Hubitat"
+  - key: serviceDebug
+    scope: RUN_TIME
+    value: "false"
+  - key: serviceTrace
+    scope: RUN_AND_BUILD_TIME
+    value: "false"
+  - key: amazonDomain
+    scope: RUN_TIME
+    value: "amazon.com"
+  - key: regionLocale
+    scope: RUN_TIME
+    value: "en-US"
+  - key: hostUrl
+    scope: RUN_TIME
+    value: ${APP_DOMAIN}
+    git:
+      branch: master
+      repo_clone_url: https://github.com/neerpatel/echo-speaks-server.git
+    name: echo-speak-server

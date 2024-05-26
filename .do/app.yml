@@ -1,0 +1,54 @@
+alerts:
+- rule: DEPLOYMENT_FAILED
+- rule: DOMAIN_FAILED
+features:
+- buildpack-stack=ubuntu-22
+ingress:
+  rules:
+  - component:
+      name: echo-speaks-server
+    match:
+      path:
+        prefix: /
+name: echo-speak-server
+region: nyc
+services:
+- environment_slug: node-js
+  envs:
+  - key: smartThingsUrl
+    scope: RUN_TIME
+    value: ""
+  - key: appCallbackUrl
+    scope: RUN_TIME
+    value: ""
+  - key: useHeroku
+    scope: RUN_TIME
+    value: "null"
+  - key: hubPlatform
+    scope: RUN_TIME
+    value: "Hubitat"
+  - key: serviceDebug
+    scope: RUN_TIME
+    value: "false"
+  - key: serviceTrace
+    scope: RUN_AND_BUILD_TIME
+    value: "false"
+  - key: amazonDomain
+    scope: RUN_TIME
+    value: "amazon.com"
+  - key: regionLocale
+    scope: RUN_TIME
+    value: "en-US"
+  - key: hostUrl
+    scope: RUN_TIME
+    value: ${APP_DOMAIN}
+  github:
+    branch: master
+    deploy_on_push: true
+    repo: neerpatel/echo-speaks-server
+  http_port: 80
+  instance_count: 1
+  instance_size_slug: apps-s-1vcpu-0.5gb
+  name: echo-speaks-server
+  run_command: node index.js
+  source_dir: /
