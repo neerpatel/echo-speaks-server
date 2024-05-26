@@ -10,7 +10,7 @@ ingress:
     match:
       path:
         prefix: /
-name: echo-speak-server
+name: echo-speaks-server
 region: nyc
 services:
 - environment_slug: node-js

@@ -173,6 +173,7 @@ function startWebConfig() {
                 let saveFile = false;
                 if (req.headers.cookiedata) {
                     let cData = JSON.parse(req.headers.cookiedata);
+                    logger.debug(cData);
                     // console.log(cData);
                     sessionFile.set("cookieData", {
                         localCookie: cData.cookie,
