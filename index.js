@@ -384,7 +384,8 @@ function sendServerDataToHub() {
                     version: appVer,
                     onHeroku: configData.settings.useHeroku === true,
                     isLocal: configData.settings.useHeroku !== true,
-                    serverUrl: configData.settings.useHeroku === true ? null : `http://${getLocalHost()}`,
+                    serverUrl: `https://${getLocalHost()}`,
+                    //serverUrl: configData.settings.useHeroku === true ? null : `http://${getLocalHost()}`,
                 },
                 json: true,
             };
@@ -646,7 +647,8 @@ function sendCookiesToEndpoint(url, cookieData) {
                     version: appVer,
                     onHeroku: configData.settings.useHeroku === true,
                     isLocal: configData.settings.useHeroku !== true,
-                    serverUrl: configData.settings.useHeroku === true ? null : `http://${getLocalHost()}`,
+                    serverUrl: `https://${getLocalHost()}`,
+                    //serverUrl: configData.settings.useHeroku === true ? null : `http://${getLocalHost()}`,
                 },
                 json: true,
             };
