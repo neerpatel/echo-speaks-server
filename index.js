@@ -93,7 +93,7 @@ const getLocalHost = (noPort = false) => {
 
 const getServerURL = (noPort = false) => {
     console.debug("getServerURL: ", `${getProtoPrefix()}://${configData.settings.hostUrl}${noPort || configData.settings.useHeroku ? "" : `:${configData.settings.serverPort}`}`);
-    return `${getProtoPrefix()}:${configData.settings.hostUrl}${noPort || configData.settings.useHeroku ? "" : `:${configData.settings.serverPort}`}`;
+    return `${getProtoPrefix()}://${configData.settings.hostUrl}${noPort || configData.settings.useHeroku ? "" : `:${configData.settings.serverPort}`}`;
 };
 
 const getProtoPrefix = () => {
@@ -389,7 +389,7 @@ function sendServerDataToHub() {
                     version: appVer,
                     onHeroku: configData.settings.useHeroku === true,
                     isLocal: configData.settings.useHeroku !== true,
-                    serverUrl: `https://${getServerURL()}`,
+                    serverUrl: `${getServerURL()}`,
                     //serverUrl: configData.settings.useHeroku === true ? null : `http://${getLocalHost()}`,
                 },
                 json: true,
@@ -652,7 +652,7 @@ function sendCookiesToEndpoint(url, cookieData) {
                     version: appVer,
                     onHeroku: configData.settings.useHeroku === true,
                     isLocal: configData.settings.useHeroku !== true,
-                    serverUrl: `https://${getServerURL()}`,
+                    serverUrl: `${getServerURL()}`,
                     //serverUrl: configData.settings.useHeroku === true ? null : `http://${getLocalHost()}`,
                 },
                 json: true,
